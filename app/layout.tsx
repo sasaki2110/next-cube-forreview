@@ -1,3 +1,5 @@
+// 自動生成されたルート画面用のレイアウト
+// 使用しない予定
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'

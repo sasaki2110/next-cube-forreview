@@ -25,3 +25,30 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+/* 以降はプロジェクト用のクラス */
+.text-blue-navbar{
+  color: #020048;
+  font-family: Inter;
+}
+
+.text-blue-cube {
+  color: #012F69;
+}
+
+.text-green-cube {
+  color: #007660;
+}
+
+.text-grey-cube {
+  color: #2C2C2C;
+}
+
+.bg-gray-cube {
+  background: #F1F1F1;
+}
+
+.bg-green-cube {
+  color: #007660;
+}
+
