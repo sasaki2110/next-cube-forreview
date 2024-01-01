@@ -3,6 +3,7 @@
 // 必要なコンポーネントをインポート
 import { useForm, SubmitHandler } from "react-hook-form"
 import Link from "next/link"
+import { useRouter } from 'next/navigation';
 
 // よくわかってないけど、入力フォームの名前をstringとしてリスト定義
 type Inputs = {
@@ -13,6 +14,9 @@ type Inputs = {
 }
 
 export default function Home() {
+
+  const router = useRouter(); 
+
   // useFormでフォーム部品を生成
   const {
     register,
@@ -20,11 +24,6 @@ export default function Home() {
     watch,
     formState: { errors },
   } = useForm<Inputs>()
-
-  // onSubmitで呼び出す関数リテラルを定義（SubmitHandlerで生成）　中身はデータをログに出すだけ
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-  }
 
   return (
     <main className="flex flex-col min-h-screen px-2 md:px-24 py-2 md:py-12 bg-gray-cube justify-center">
@@ -51,9 +50,9 @@ export default function Home() {
       {/* 部屋情報エリア */}
 
 
-      {/* 入力エリア */}
+      {/* 入力エリア onSubmit={handleSubmit(onSubmit)} */}
       <div className="md:flex md:items-center mb-6">
-      <form className="w-full max-w-2xl" onSubmit={handleSubmit(onSubmit)}>
+      <form className="w-full max-w-2xl" action="/detail/reservation/check">
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
               <label
