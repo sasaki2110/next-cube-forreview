@@ -27,7 +27,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col min-h-screen px-24 py-12 bg-gray-cube justify-center">
+    <main className="flex flex-col min-h-screen px-2 md:px-24 py-2 md:py-12 bg-gray-cube justify-center">
     {/*<main className="flex flex-col min-h-screen px-24 py-12 bg-gray-cube">*/}
       {/* タイトルエリア */}
       <div className="my-4 mx-2">
