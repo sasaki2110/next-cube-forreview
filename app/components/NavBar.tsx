@@ -2,6 +2,8 @@
 //
 // ナビゲーションバー
 //
+// でもパクッテきたけど、いまいち動きが変やからどうするか・・・・・・・・
+//
 ////////////////////////////////////////////////////////////////////////////////////////////////
 "use client";
 
@@ -55,7 +57,7 @@ export default function NavBar():ReactNode {
             </Link>
           </li>
           <li>
-            <Link onClick={handleMenuClose} href="/">
+            <Link onClick={handleMenuClose} href="/detail/reservation/input">
               お問い合わせ
             </Link>
           </li>

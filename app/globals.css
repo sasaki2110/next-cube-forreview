@@ -52,3 +52,67 @@ body {
   color: #007660;
 }
 
+.step {
+  padding: 0 0 40px 0;
+  zoom: 1;
+}
+  
+  
+.step li.current {
+  color: #fff;
+  background: #007660;
+}
+  
+  
+.step li {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  width: 33.333%;
+  padding: 16px 0;
+  text-align: center;
+  background: #F6F6F6;
+  font-size: 14px;
+  line-height: 1;
+}
+  
+  
+.step li::before {
+  position: absolute;
+  top: -6px;
+  right: 0;
+  width: 0;
+  height: 0;
+  content: "";
+  border-top: 30px solid #F6F6F6;
+  border-bottom: 30px solid #F6F6F6;
+  border-left: 11px solid #fff;
+}
+ 
+.step li::after {
+  position: absolute;
+  top: -6px;
+  right: 2px;
+  width: 0;
+  height: 0;
+  content: "";
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 11px solid #F6F6F6;
+}
+ 
+.step li.current::after {
+  position: absolute;
+  top: -6px;
+  right: 2px;
+  width: 0;
+  height: 0;
+  content: "";
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 11px solid #007660;
+}
+
+.step li.last::before, .step li.last.after {
+  display: none;
+}
