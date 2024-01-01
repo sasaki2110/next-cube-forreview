@@ -35,10 +35,6 @@ Amplify.configure({
   }
 })
 
-interface Props extends WithAuthenticatorProps {
-  isPassedToWithAuthenticator: boolean
-}
-
 const loginMechanisms:"email" | "phone_number" | "username" = "email";
 
 const withAuthenticatorOptions = {
@@ -54,13 +50,11 @@ import { I18n } from 'aws-amplify/utils';
  * おしらせページ処理
  * @returns 画面表示するReactNode
  */
-function App({ isPassedToWithAuthenticator, signOut, user }: Props) {
+function App({ signOut, user }: WithAuthenticatorProps) {
 
   // API（Lambda）のURLを設定（念のため、環境変数で定義）
-  let url = ""
-  if(typeof(process.env.NEXT_PUBLIC_URL_GETCOSTMERS)==="string") {
-    url = process.env.NEXT_PUBLIC_URL_GETCOSTMERS;
-  }
+  let url = (typeof(process.env.NEXT_PUBLIC_URL_GETCOSTMERS)==="string")?process.env.NEXT_PUBLIC_URL_GETCOSTMERS:"";
+  
   console.log(url);
 
   // tanstackQuery呼び出し
