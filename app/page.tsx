@@ -8,6 +8,14 @@ export default function Home() {
       <Link href="detail" className="border border-blue-400 bg-white py-2 px-4 rounded-lg hover:bg-blue-100">
         店舗詳細画面へ
       </Link>
+      <p></p>
+        <p>ナビゲーションバーの「ログイン」でマイページのサンプルを表示。</p>
+        <p>ナビゲーションバーの「電話番号のアイコンごよやく（スマホでは内覧予約）」で内覧予約ページのサンプルを表示。</p>
+        <p></p>
+        <p>認証はホストされたUIを利用しています。（@aws-amplify/ui-react aws-amplifyを利用）</p>
+        <p>テストする際は下記を利用して下さい。</p>
+        <p>mailaddress:tonkati2001@gmail.com</p>
+        <p>password:Hoge-fuga001!</p>　
     </main>
   )
 }
