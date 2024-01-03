@@ -5,7 +5,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////
 'use client'
 import * as React from "react"
-import Link from 'next/link'
 import Image from 'next/image'
 
 import Autoplay from "embla-carousel-autoplay"
@@ -13,12 +12,10 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel"
 
-
 export default function Home() {
+  // オートプレイ（自動スワイプ用プラグイン生成）
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   )
@@ -62,7 +59,6 @@ export default function Home() {
                   <Image src="https://bucksam1.s3.amazonaws.com/sinagawa5.jpg" alt="店舗画像" width="700" height="100"/>
                 </CarouselItem>
               </CarouselContent>
-
             </Carousel>
           </div>
 
@@ -85,7 +81,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      </main>
+    </main>
   )
 }

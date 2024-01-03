@@ -1,3 +1,8 @@
+////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// 内覧予約（入力）画面
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
 'use client'
 
 // 必要なコンポーネントをインポート
@@ -5,7 +10,7 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import Link from "next/link"
 import { useRouter } from 'next/navigation';
 
-// よくわかってないけど、入力フォームの名前をstringとしてリスト定義
+// 入力フォームの名前をstringとしてリスト定義
 type Inputs = {
   lastName: string
   firstName: string
@@ -15,6 +20,7 @@ type Inputs = {
 
 export default function Home() {
 
+  // 画面遷移用にルーターを取得
   const router = useRouter(); 
 
   // useFormでフォーム部品を生成
@@ -41,12 +47,11 @@ export default function Home() {
   }
 
   return (
-    <main className="container flex flex-col mx-auto min-h-screen px-20">
-    {/*<main className="flex flex-col min-h-screen px-24 py-12 bg-gray-cube">*/}
+    <main className="container flex flex-col mx-auto min-h-screen px-2 md:px-24">
       {/* タイトルエリア */}
       <div className="my-4 mx-2">
         <h1 className="text-3xl font-semibold text-blue-cube">内覧予約</h1>
-        <p><Link href="/" className="text-green-cube">よくあるご質問</Link>でもご案内しております。</p>
+        <p><Link href="#" className="text-green-cube">よくあるご質問</Link>でもご案内しております。</p>
       </div>
 
       {/* 直線 */}
@@ -65,9 +70,9 @@ export default function Home() {
       {/* 部屋情報エリア */}
 
 
-      {/* 入力エリア onSubmit={handleSubmit(onSubmit)} */}
+      {/* 入力エリア onSubmit={handleSubmit(onSubmit)} action="/detail/reservation/check" */}
       <div className="md:flex md:items-center mb-6">
-      <form className="w-full max-w-2xl" action="/detail/reservation/check" onSubmit={handleSubmit(onSubmit)}>
+      <form className="w-full max-w-2xl" onSubmit={handleSubmit(onSubmit)}>
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
               <label
@@ -88,7 +93,7 @@ export default function Home() {
                 placeholder="姓"
                 {...register("lastName", { required: true })}
               />
-              {errors.lastName && <span>この項目は必須入力です。</span>}
+              {errors.lastName && <span>「姓」は必須入力です。</span>}
             </div>
           </div>
           
@@ -113,7 +118,7 @@ export default function Home() {
                 placeholder="名"
                 {...register("firstName", { required: true })}
               />
-              {errors.firstName && <span>この項目は必須入力です。</span>}            </div>
+              {errors.firstName && <span>「名」は必須入力です。</span>}            </div>
           </div>
 
           <div className="md:flex md:items-center mb-6">
@@ -132,9 +137,9 @@ export default function Home() {
                 defaultValue=""
                 placeholder="例) example@gmail.me"
                 {...register("mailAddress", { 
-                  required: "メールを入力してね",  
+                  required: "「メールアドレス」は必須入力です。",  
                   pattern: {value:/^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/,
-                            message:"ちゃんとしたメールアドレス形式で入力してね"}
+                            message:"正しいメールアドレスを入力してください。"}
                 })}
               />
               {errors.mailAddress && <span>{errors.mailAddress.message}</span>}
@@ -158,30 +163,20 @@ export default function Home() {
                 placeholder="例) 03-1234-5678"
                 {...register("phoneNumber", { required: true })}
               />
-              {errors.phoneNumber && <span>この項目は必須入力です。</span>}
+              {errors.phoneNumber && <span>「電話番号」は必須入力です。</span>}
             </div>
           </div>
           <div className="flex justify-center">
-            {/*
-            {isSubmitted ? (
-              <div>
-                <p className="text-green-500 text-lg text-bold">
-                  お問合せを送信いたしました。
-                </p>
-              </div>
-            ) : (*/}
-              <button
-                className={
-                  "py-3 lg:py-3 px-14 lg:px-14 text-white-500 font-bold rounded-3xl bg-blue-400 hover:shadow-teal-md transition-all outline-none text-white"
-                }
-                type="submit"
-              >
-                送信
-              </button>
-            {/* )}*/}
+            <button
+              className={
+                "py-3 lg:py-3 px-14 lg:px-14 text-white-500 font-bold rounded-3xl bg-blue-400 hover:shadow-teal-md transition-all outline-none text-white"
+              }
+              type="submit"
+            >
+              送信
+            </button>
           </div>
         </form>
-
       </div>
     </main>
   )

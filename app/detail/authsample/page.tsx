@@ -8,6 +8,19 @@
 import * as AmazonCognitoIdentity from "amazon-cognito-identity-js";
 import { useRef } from "react";
 
+/**
+ * 環境変数をstring型で代入できるよう、typeチェック
+ * @param str 環境変数
+ * @returns string 型に限定した環境変数
+ */
+function etos(str:string | undefined):string {
+  return(typeof(str)==="string"?str:"")
+}
+
+/**
+ * ログイン画面
+ * @returns ログイン画面コンポーネント
+ */
 const Login = () => {
   // 画面内で使用するrefを定義
   const refEmail = useRef<HTMLInputElement>(null);
@@ -15,10 +28,11 @@ const Login = () => {
 
   // Cognito User Poolへの接続情報を設定
   const poolData:AmazonCognitoIdentity.ICognitoUserPoolData = {
-    UserPoolId: (typeof(process.env.NEXT_PUBLIC_COGNITO_USERPOOLID)==="string")?process.env.NEXT_PUBLIC_COGNITO_USERPOOLID:"",
-    ClientId: (typeof(process.env.NEXT_PUBLIC_COGNITO_APPCLIENTID)==="string")?process.env.NEXT_PUBLIC_COGNITO_APPCLIENTID:"",
+    UserPoolId: etos(process.env.NEXT_PUBLIC_COGNITO_USERPOOLID),
+    ClientId: etos(process.env.NEXT_PUBLIC_COGNITO_APPCLIENTID),
   };
 
+  // ユーザープールを生成
   const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
   // Loginボタン押下時の処理を実装

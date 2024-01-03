@@ -1,3 +1,8 @@
+////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// 内覧予約（チェック）画面
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
 'use client'
 
 import { useSearchParams } from "next/navigation";
@@ -13,10 +18,8 @@ export default function Home() {
 
   return (
     <main className="container flex flex-col mx-auto min-h-screen px-20">
-
-  {/*<main className="flex flex-col min-h-screen px-2 md:px-24 py-2 md:py-12 bg-gray-cube justify-center">*/}
-            {/* タイトルエリア */}
-            <div className="my-4 mx-2">
+      {/* タイトルエリア */}
+      <div className="my-4 mx-2">
         <h1 className="text-3xl font-semibold text-blue-cube">内覧予約</h1>
       </div>
 
@@ -26,7 +29,7 @@ export default function Home() {
       {/* ステップエリア */}
       <div className="my-4 mx-2">
         <ul className="step">
-          <li className="current">入力</li>
+          <li className="prev">入力</li>
           <li className="current">内容確認</li>
           <li className="last">完了</li>
         </ul>
@@ -84,14 +87,6 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center">
-            {/*
-            {isSubmitted ? (
-              <div>
-                <p className="text-green-500 text-lg text-bold">
-                  お問合せを送信いたしました。
-                </p>
-              </div>
-            ) : (*/}
               <button
                 className={
                   "py-3 lg:py-3 px-14 lg:px-14 text-white-500 font-bold rounded-3xl bg-blue-400 hover:shadow-teal-md transition-all outline-none text-white"
@@ -100,13 +95,9 @@ export default function Home() {
               >
                 送信
               </button>
-            {/* )}*/}
           </div>
         </form>
-
       </div>
-
-
     </main>
   )
 }

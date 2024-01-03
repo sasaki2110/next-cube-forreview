@@ -3,6 +3,7 @@
 // ナビゲーションバー
 //
 // こっちの方がしっくりくる。こっちの前提で進める。
+// 課題は位置の固定（fixedにすると、横にずれてしまう。）
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 "use client";
@@ -10,6 +11,10 @@ import React, { useState } from 'react';
 import Link from "next/link"
 import Image from "next/image"
 
+/**
+ * ナビゲーションバー
+ * @returns ナビゲーションバーコンポーネント
+ */
 export default function NavBar2() {
   // スマホ画面でのハンバーガーメニューオープン状態
   const [isOpen, setIsOpen] = useState(false);
