@@ -6,7 +6,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 "use client";
-'use client'
 import React, { useState } from 'react';
 import Link from "next/link"
 import Image from "next/image"
@@ -14,6 +13,8 @@ import Image from "next/image"
 export default function NavBar2() {
   // スマホ画面でのハンバーガーメニューオープン状態
   const [isOpen, setIsOpen] = useState(false);
+
+  
 
   return (
       <div className="container mx-auto text-blue-navbar bg-white">
@@ -45,12 +46,12 @@ export default function NavBar2() {
         </div>
         <div className={isOpen?"block":"hidden"}>
           <ul className="flex flex-col md:flex-row justify-center md:justify-end items-center">
-            <Link href="#" className="block px-2 py-2 text-center">店舗情報</Link>
-            <Link href="#" className="block px-2 py-2 text-center">ご利用の流れ</Link>
-            <Link href="#" className="block px-2 py-2 text-center">よくあるご質問</Link>
-            <Link href="#" className="block px-2 py-2 text-center">お問い合わせ</Link>
-            <Link href="/detail/mypage" className="block px-2 py-2 text-center">ログイン</Link>
-            <Link href="/detail/reservation/input" className="block px-2 py-2 text-center" >
+            <Link href="#" onClick={()=> {setIsOpen(!isOpen)}} className="block px-2 py-2 text-center">店舗情報</Link>
+            <Link href="#" onClick={()=> {setIsOpen(!isOpen)}} className="block px-2 py-2 text-center">ご利用の流れ</Link>
+            <Link href="#" onClick={()=> {setIsOpen(!isOpen)}} className="block px-2 py-2 text-center">よくあるご質問</Link>
+            <Link href="#" onClick={()=> {setIsOpen(!isOpen)}} className="block px-2 py-2 text-center">お問い合わせ</Link>
+            <Link href="/detail/mypage" onClick={()=> {setIsOpen(!isOpen)}} className="block px-2 py-2 text-center">ログイン</Link>
+            <Link href="/detail/reservation/input" onClick={()=> {setIsOpen(!isOpen)}} className="block px-2 py-2 text-center" >
               内覧予約
             </Link>
           </ul>
