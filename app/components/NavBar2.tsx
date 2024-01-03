@@ -13,9 +13,7 @@ import Image from "next/image"
 export default function NavBar2() {
   // スマホ画面でのハンバーガーメニューオープン状態
   const [isOpen, setIsOpen] = useState(false);
-
   
-
   return (
       <div className="container mx-auto text-blue-navbar bg-white">
         <div className="flex justify-between items-center">
@@ -33,7 +31,7 @@ export default function NavBar2() {
           </div>
           <div className="hidden md:block ">
             <ul className="flex flex-col md:flex-row justify-center md:justify-end items-end">
-              <Link href="#" className="block px-2 py-2 text-center">店舗情報</Link>
+              <Link href="/detail" className="block px-2 py-2 text-center">店舗情報</Link>
               <Link href="#" className="block px-2 py-2 text-center">ご利用の流れ</Link>
               <Link href="#" className="block px-2 py-2 text-center">よくあるご質問</Link>
               <Link href="#" className="block px-2 py-2 text-center">お問い合わせ</Link>
@@ -46,7 +44,7 @@ export default function NavBar2() {
         </div>
         <div className={isOpen?"block":"hidden"}>
           <ul className="flex flex-col md:flex-row justify-center md:justify-end items-center">
-            <Link href="#" onClick={()=> {setIsOpen(!isOpen)}} className="block px-2 py-2 text-center">店舗情報</Link>
+            <Link href="/detail" onClick={()=> {setIsOpen(!isOpen)}} className="block px-2 py-2 text-center">店舗情報</Link>
             <Link href="#" onClick={()=> {setIsOpen(!isOpen)}} className="block px-2 py-2 text-center">ご利用の流れ</Link>
             <Link href="#" onClick={()=> {setIsOpen(!isOpen)}} className="block px-2 py-2 text-center">よくあるご質問</Link>
             <Link href="#" onClick={()=> {setIsOpen(!isOpen)}} className="block px-2 py-2 text-center">お問い合わせ</Link>
