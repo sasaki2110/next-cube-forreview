@@ -21,7 +21,7 @@ export default function Home() {
   )
 
   return (
-    <main className="container flex flex-col mx-auto px-2 md:px-24 min-h-screen fbg-gray-cube">
+    <main className="container flex flex-col mx-auto px-2 md:px-24 min-h-screen bg-gray-cube">
       {/* タイトルエリア */}
       <div className="md:my-4 md:mx-2">
           <h1 className="text-3xl font-semibold text-blue-cube">店舗情報</h1>
