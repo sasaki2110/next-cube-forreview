@@ -70,10 +70,10 @@ export default function Home() {
               title="map" 
               width="100%" height="380px" />
 
-            <p className="text-sm text-green-cube pt-8">車をご利用の型</p>
+            <p className="text-sm text-green-cube pt-8">車をご利用の方</p>
             <p className="text-sm">首都高速５号線で、池袋・高島平方面からお越しの場合は「飯田橋ランプ」、銀座・新宿方面からお越しの場合は「西神田ランプ」で降り、外堀通りを秋葉原方面にお進みください。</p>
 
-            <p className="text-sm text-green-cube pt-8">電車をご利用の型</p>
+            <p className="text-sm text-green-cube pt-8">電車をご利用の方</p>
             <p className="text-sm">①JR各線「品川」駅 港南口より徒歩14分</p>
             <p className="text-sm">②京急線「北品川」駅より徒歩8分</p>
             <p className="text-sm">③東京モノレール「天王洲アイル」駅南口より徒歩10分 </p>
