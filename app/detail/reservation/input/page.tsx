@@ -71,8 +71,8 @@ export default function Home() {
 
 
       {/* 入力エリア onSubmit={handleSubmit(onSubmit)} action="/detail/reservation/check" */}
-      <div className="md:flex md:items-center mb-6">
-      <form className="w-full max-w-2xl" onSubmit={handleSubmit(onSubmit)}>
+      <div className="md:flex md:items-center mb-6 justify-center pt-14">
+      <form className="w-full max-w-3xl" onSubmit={handleSubmit(onSubmit)}>
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
               <label
@@ -87,7 +87,7 @@ export default function Home() {
             </div>
             <div className="md:w-2/3">
               <input
-                className="bg-gray-200 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                className="bg-gray-200 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700"
                 type="text"
                 defaultValue=""
                 placeholder="姓"
@@ -112,7 +112,7 @@ export default function Home() {
 
             <div className="md:w-2/3">
               <input
-                className="bg-gray-200 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                className="bg-gray-200 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700"
                 type="text"
                 defaultValue=""
                 placeholder="名"
@@ -132,7 +132,7 @@ export default function Home() {
             </div>
             <div className="md:w-2/3">
               <input
-                className="bg-gray-200 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                className="bg-gray-200 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700"
                 type="text"
                 defaultValue=""
                 placeholder="例) example@gmail.me"
@@ -157,7 +157,7 @@ export default function Home() {
             </div>
             <div className="md:w-2/3">
               <input
-                className="bg-gray-200 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                className="bg-gray-200 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700"
                 type="text"
                 defaultValue=""
                 placeholder="例) 03-1234-5678"
@@ -169,7 +169,7 @@ export default function Home() {
           <div className="flex justify-center">
             <button
               className={
-                "py-3 lg:py-3 px-14 lg:px-14 text-white-500 font-bold rounded-3xl bg-blue-400 hover:shadow-teal-md transition-all outline-none text-white"
+                "py-3 lg:py-3 px-14 lg:px-14 font-bold rounded-sm text-green-700 border border-green-700 hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none "
               }
               type="submit"
             >

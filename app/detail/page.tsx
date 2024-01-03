@@ -36,7 +36,7 @@ export default function Home() {
       </div>
 
       {/* 次に店舗詳細エリア */}
-      <div  className="md:my-4 md:mx-2 md:px-4 border-2 border-gray-cube rounded-md bg-white ">
+      <div  className="md:my-4 md:mx-2 md:px-4 pt-4 border-2 border-gray-cube rounded-md bg-white">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 px-2 py-2 ">
           {/* 店舗画像エリア */}
           <div>
