@@ -65,7 +65,7 @@ export default function Home() {
           {/* マップエリア */}
           <div>
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.4012566583356!2d139.80864417476812!3d35.667120669996976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018890082b85bc3%3A0xcf533b02ac169ede!2z44Ki44OR44Ob44OG44Or44CI5p2x5Lqs5pyo5aC044CJ!5e0!3m2!1sja!2sjp!4v1701843061344!5m2!1sja!2sjp" 
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5773.476662101816!2d139.77558612629016!3d35.69536342160449!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188fdcada147ed%3A0x557e5c5217353871!2z44OI44Op44Oz44Kv44Or44O844OgQ1VCRSDnp4vokYnljp_lupc!5e0!3m2!1sja!2sjp!4v1704271224853!5m2!1sja!2sjp" 
               loading="lazy" 
               title="map" 
               width="100%" height="380px" />
