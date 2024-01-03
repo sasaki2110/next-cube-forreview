@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="container flex flex-col mx-auto min-h-screen px-20">
       <Link href="detail">
         <p>店舗詳細画面のサンプル</p>
 

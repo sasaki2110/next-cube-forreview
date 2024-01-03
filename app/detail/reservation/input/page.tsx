@@ -25,8 +25,23 @@ export default function Home() {
     formState: { errors },
   } = useForm<Inputs>()
 
+  // onSubmitで呼び出す関数リテラルを定義（SubmitHandlerで生成）　中身はデータをログに出すだけ
+  // なぜかformをサブミット（actionで指定されたパスへ遷移）する方法も、
+  // router.pushにフォームをパラメータとして渡す方法も検索できなかったので、
+  // やむなくリクエストパラメータにフォームの内容を転記。
+  // ただし、本番では個人情報が流れるので、絶対にNG
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+    router.push("/detail/reservation/check?"
+                + "lastName=" + data.lastName + "&"
+                + "firstName=" + data.firstName + "&"
+                + "mailAddress=" + data.mailAddress + "&"
+                + "phoneNumber=" + data.phoneNumber
+    );
+  }
+
   return (
-    <main className="flex flex-col min-h-screen px-2 md:px-24 py-2 md:py-12 bg-gray-cube justify-center">
+    <main className="container flex flex-col mx-auto min-h-screen px-20">
     {/*<main className="flex flex-col min-h-screen px-24 py-12 bg-gray-cube">*/}
       {/* タイトルエリア */}
       <div className="my-4 mx-2">
@@ -52,7 +67,7 @@ export default function Home() {
 
       {/* 入力エリア onSubmit={handleSubmit(onSubmit)} */}
       <div className="md:flex md:items-center mb-6">
-      <form className="w-full max-w-2xl" action="/detail/reservation/check">
+      <form className="w-full max-w-2xl" action="/detail/reservation/check" onSubmit={handleSubmit(onSubmit)}>
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
               <label

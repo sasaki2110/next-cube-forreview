@@ -18,11 +18,14 @@ export default function DetailLayout({
 }) {
   return (
     <Providers>
+
       <NavBar2/>
-      <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
+      {/*<div className="container flex h-screen flex-col md:flex-row md:overflow-hidden">*/}
         {/*<div className="flex-grow p-6 md:overflow-y-auto md:p-6">{children}</div>*/}
-        <div className="flex-grow md:overflow-y-auto md:p-20">{children}</div>
-        </div>
+        {/*<div className="flex-grow md:overflow-y-auto md:p-20">{children}</div>*/}
+        <div>{children}</div>
+        
+        {/*</div>*/}
     </Providers>
   )
 }

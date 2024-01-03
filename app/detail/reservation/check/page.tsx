@@ -1,8 +1,5 @@
 'use client'
 
-
-"use client";
-
 import { useSearchParams } from "next/navigation";
 
 export default function Home() {
@@ -15,7 +12,9 @@ export default function Home() {
   console.log(lastName + ":" + firstName + ":" + mailAddress + ":" + phoneNumber)
 
   return (
-    <main className="flex flex-col min-h-screen px-2 md:px-24 py-2 md:py-12 bg-gray-cube justify-center">
+    <main className="container flex flex-col mx-auto min-h-screen px-20">
+
+  {/*<main className="flex flex-col min-h-screen px-2 md:px-24 py-2 md:py-12 bg-gray-cube justify-center">*/}
             {/* タイトルエリア */}
             <div className="my-4 mx-2">
         <h1 className="text-3xl font-semibold text-blue-cube">内覧予約</h1>
@@ -33,7 +32,7 @@ export default function Home() {
         </ul>
       </div>
       <div className="md:flex md:items-center mb-6">
-      <form className="w-full max-w-2xl" action="/detail/reservation/check">
+      <form className="w-full max-w-2xl" action="/detail/reservation/finish">
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
               <label

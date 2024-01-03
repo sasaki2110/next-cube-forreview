@@ -88,10 +88,11 @@ function App({ signOut, user }: WithAuthenticatorProps) {
 
   // 画面を描画してリターン
   return (
-    <main className="flex flex-col min-h-screen px-2 md:px-24 py-2 md:py-12 bg-gray-cube">
+    <main className="container flex flex-col mx-auto px-2 md:px-24 fbg-gray-cube">
+    {/*<main className="flex flex-col min-h-screen px-2 md:px-24 py-2 md:py-12 bg-gray-cube">*/}
       
       {/* 動作確認用　サインアウトボタン */}
-      <button onClick={signOut}>Sign out</button>
+      <button onClick={signOut}>サインアウト（テスト用）</button>
 
       {/* タイトルエリア */}
       <div className="md:my-4 md:mx-2">
