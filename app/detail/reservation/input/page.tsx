@@ -47,7 +47,7 @@ export default function Home() {
   }
 
   return (
-    <main className="container flex flex-col mx-auto min-h-screen px-2 md:px-24">
+    <main className="container flex flex-col mx-auto min-h-screen px-2 md:px-24 pt-32 ">
       {/* タイトルエリア */}
       <div className="my-4 mx-2">
         <h1 className="text-3xl font-semibold text-blue-cube">内覧予約</h1>

@@ -104,7 +104,7 @@ function App({ signOut, user }: WithAuthenticatorProps) {
 
   // 画面を描画してリターン
   return (
-    <main className="container flex flex-col mx-auto px-2 md:px-24 bg-gray-cube">
+    <main className="container flex flex-col mx-auto px-2 md:px-24 pt-32 bg-gray-cube">
       
       {/* 動作確認用　サインアウトボタン */}
       <button onClick={signOut}>サインアウト（テスト用）</button>

@@ -20,7 +20,7 @@ export default function NavBar2() {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-      <div className="container mx-auto text-blue-navbar bg-white">
+      <div className="fixed w-screen z-10 px-1 md:px-20 text-blue-navbar bg-white">
         <div className="flex justify-between items-center">
           <div>
             <Link className="" href="/">
