@@ -9,7 +9,7 @@ module.exports = {
           {
             // これも環境変数化が必要かな
             protocol: 'https',
-            hostname: 'bucksam1.s3.amazonaws.com',
+            hostname: process.env.NEXT_PUBLIC_IMAGE_HOSTNAME,
             port: '',
             pathname: '/**',
           },

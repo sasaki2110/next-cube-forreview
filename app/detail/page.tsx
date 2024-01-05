@@ -14,6 +14,15 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 
+/**
+ * 環境変数をstring型で代入できるよう、typeチェック
+ * @param str 環境変数
+ * @returns string 型に限定した環境変数
+ */
+function etos(str:string | undefined):string {
+  return(typeof(str)==="string"?str:"")
+}
+
 export default function Home() {
   // オートプレイ（自動スワイプ用プラグイン生成）
   const plugin = React.useRef(
@@ -48,15 +57,15 @@ export default function Home() {
             >
               <CarouselContent>
                 <CarouselItem key={1}>
-                  <Image src="https://bucksam1.s3.amazonaws.com/sinagawa1.png" alt="店舗画像" width="700" height="100"/>
+                  <Image src={etos(process.env.NEXT_PUBLIC_IMAGE_STOREDETAUL1)} alt="店舗画像" width="700" height="100"/>
                 </CarouselItem>
 
                 <CarouselItem  key={2}>
-                  <Image src="https://bucksam1.s3.amazonaws.com/sinagawa3.jpg" alt="店舗画像" width="700" height="100"/>
+                  <Image src={etos(process.env.NEXT_PUBLIC_IMAGE_STOREDETAUL2)} alt="店舗画像" width="700" height="100"/>
                 </CarouselItem>
 
                 <CarouselItem  key={3}>
-                  <Image src="https://bucksam1.s3.amazonaws.com/sinagawa5.jpg" alt="店舗画像" width="700" height="100"/>
+                  <Image src={etos(process.env.NEXT_PUBLIC_IMAGE_STOREDETAUL3)} alt="店舗画像" width="700" height="100"/>
                 </CarouselItem>
               </CarouselContent>
             </Carousel>
@@ -65,7 +74,7 @@ export default function Home() {
           {/* マップエリア */}
           <div>
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5773.476662101816!2d139.77558612629016!3d35.69536342160449!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188fdcada147ed%3A0x557e5c5217353871!2z44OI44Op44Oz44Kv44Or44O844OgQ1VCRSDnp4vokYnljp_lupc!5e0!3m2!1sja!2sjp!4v1704271224853!5m2!1sja!2sjp" 
+              src={etos(process.env.NEXT_PUBLIC_URL_MAP)}
               loading="lazy" 
               title="map" 
               width="100%" height="380px" />
