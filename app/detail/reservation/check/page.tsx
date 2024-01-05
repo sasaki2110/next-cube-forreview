@@ -5,17 +5,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////
 'use client'
 
-import { useSearchParams } from "next/navigation";
+// 画面間受け渡し用コンテキストのインポート
+import { useContext } from 'react'
+import { UserInfoContext } from '@/app/contexts/UserInfoContext'
 
 export default function Home() {
-  const searchParams = useSearchParams();
-  const lastName = searchParams.get("lastName");
-  const firstName = searchParams.get("firstName");
-  const mailAddress = searchParams.get("mailAddress");
-  const phoneNumber  = searchParams.get("phoneNumber");
-
-  console.log(lastName + ":" + firstName + ":" + mailAddress + ":" + phoneNumber)
-
+ // 受け渡しパラメータ用のコンテキストを取得
+  const user = useContext(UserInfoContext);
   return (
     <main className="container flex flex-col mx-auto min-h-screen px-2 md:px-24 pt-32 ">
       {/* タイトルエリア */}
@@ -34,7 +30,11 @@ export default function Home() {
           <li className="last">完了</li>
         </ul>
       </div>
-      <div className="md:flex md:items-center mb-6">
+
+      {/* フォームエリア */}
+      <UserInfoContext.Provider value={user}>
+
+      <div className="md:flex md:items-center mb-6 justify-center pt-14">
       <form className="w-full max-w-2xl" action="/detail/reservation/finish">
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
@@ -46,7 +46,7 @@ export default function Home() {
               </label>
             </div>
             <div className="md:w-2/3">
-              {lastName}
+              {user.lastName}
             </div>
           </div>
           
@@ -61,7 +61,7 @@ export default function Home() {
             </div>
 
             <div className="md:w-2/3">
-              {firstName}
+              {user.firstName}
             </div>
           </div>
 
@@ -72,7 +72,7 @@ export default function Home() {
               </label>
             </div>
             <div className="md:w-2/3">
-              {mailAddress}
+              {user.mailAddress}
             </div>
           </div>
 
@@ -83,21 +83,22 @@ export default function Home() {
               </label>
             </div>
             <div className="md:w-2/3">
-              {phoneNumber}
+              {user.phoneNumber}
             </div>
           </div>
           <div className="flex justify-center">
-              <button
-                className={
-                  "py-3 lg:py-3 px-14 lg:px-14 text-white-500 font-bold rounded-3xl bg-blue-400 hover:shadow-teal-md transition-all outline-none text-white"
-                }
-                type="submit"
-              >
-                送信
-              </button>
+            <button
+              className={
+                "py-3 lg:py-3 px-14 lg:px-14 font-bold rounded-sm text-green-700 border border-green-700 hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none "
+              }
+              type="submit"
+            >
+              送信
+            </button>
           </div>
         </form>
       </div>
+      </UserInfoContext.Provider>
     </main>
   )
 }

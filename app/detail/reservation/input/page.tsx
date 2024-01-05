@@ -10,18 +10,17 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import Link from "next/link"
 import { useRouter } from 'next/navigation';
 
-// 入力フォームの名前をstringとしてリスト定義
-type Inputs = {
-  lastName: string
-  firstName: string
-  mailAddress: string
-  phoneNumber: string
-}
+// 画面間受け渡し用コンテキストのインポート
+import { useContext } from 'react'
+import { UserInfo, UserInfoContext } from '@/app/contexts/UserInfoContext'
 
 export default function Home() {
 
   // 画面遷移用にルーターを取得
   const router = useRouter(); 
+
+  // 受け渡しパラメータ用のコンテキストを取得
+  const user = useContext(UserInfoContext);
 
   // useFormでフォーム部品を生成
   const {
@@ -29,21 +28,21 @@ export default function Home() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Inputs>()
+  } = useForm<UserInfo>()
 
-  // onSubmitで呼び出す関数リテラルを定義（SubmitHandlerで生成）　中身はデータをログに出すだけ
-  // なぜかformをサブミット（actionで指定されたパスへ遷移）する方法も、
-  // router.pushにフォームをパラメータとして渡す方法も検索できなかったので、
-  // やむなくリクエストパラメータにフォームの内容を転記。
-  // ただし、本番では個人情報が流れるので、絶対にNG
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  // onSubmitで呼び出す関数リテラルを定義
+  const onSubmit: SubmitHandler<UserInfo> = (data) => {
     console.log(data);
-    router.push("/detail/reservation/check?"
-                + "lastName=" + data.lastName + "&"
-                + "firstName=" + data.firstName + "&"
-                + "mailAddress=" + data.mailAddress + "&"
-                + "phoneNumber=" + data.phoneNumber
-    );
+    
+    // 入力された値をコンテキストへ詰め替え
+    // これはもしかして、もっとスマートな方法がある？
+    user.lastName = data.lastName
+    user.firstName = data.firstName
+    user.mailAddress = data.mailAddress
+    user.phoneNumber = data.phoneNumber
+
+    // チェック画面へ遷移
+    router.push("/detail/reservation/check?");
   }
 
   return (
@@ -173,7 +172,7 @@ export default function Home() {
               }
               type="submit"
             >
-              送信
+              確認
             </button>
           </div>
         </form>
