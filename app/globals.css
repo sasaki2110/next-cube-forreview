@@ -93,12 +93,31 @@
   color: #2C2C2C;
 }
 
-.bg-gray-cube {
-  background: #F1F1F1;
+.bg-blue-cube {
+  background-color: #012F69;
 }
 
 .bg-green-cube {
-  color: #007660;
+  background-color: #007660;
+}
+
+.bg-gray-cube {
+  background-color: #F1F1F1;
+}
+
+.border-blue-cube {
+	--tw-border-opacity: 1;
+  border-color: #012F69;
+}
+
+.border-green-cube {
+	--tw-border-opacity: 1;
+  border-color: #007660;
+}
+
+.border-gray-cube {
+	--tw-border-opacity: 1;
+  border-color: #F1F1F1;
 }
 
 .step {

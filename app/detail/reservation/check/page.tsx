@@ -39,7 +39,7 @@ export default function Home() {
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
               <label
-                className="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4"
+                className="block text-black md:text-right mb-1 md:mb-0 pr-4"
                 htmlFor="inline-last-name"
               >
                 姓
@@ -53,7 +53,7 @@ export default function Home() {
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
               <label
-                className="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4"
+                className="block text-black md:text-right mb-1 md:mb-0 pr-4"
                 htmlFor="inline-first-name"
               >
                 名
@@ -67,7 +67,7 @@ export default function Home() {
 
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
-              <label className="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4">
+              <label className="block text-black md:text-right mb-1 md:mb-0 pr-4">
                 メールアドレス
               </label>
             </div>
@@ -78,7 +78,7 @@ export default function Home() {
 
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
-              <label className="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4">
+              <label className="block text-black md:text-right mb-1 md:mb-0 pr-4">
                 電話番号
               </label>
             </div>
@@ -89,7 +89,7 @@ export default function Home() {
           <div className="flex justify-center">
             <button
               className={
-                "py-3 lg:py-3 px-14 lg:px-14 font-bold rounded-sm text-green-700 border border-green-700 hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none "
+                "py-3 lg:py-3 px-14 lg:px-14 font-bold rounded-sm text-green-cube border border-green-cube hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none "
               }
               type="submit"
             >
