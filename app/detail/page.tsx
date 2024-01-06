@@ -48,7 +48,7 @@ export default function Home() {
 
       {/* 次に店舗概要エリア */}
       <div  className="md:my-4 md:mx-2 md:px-4 border-2 border-gray-cube rounded-md bg-white ">
-        <h1 className="text-2xl font-semibold text-green-cube mx-8 mt-8">CUBE 秋葉原</h1>
+        <h1 className="text-2xl font-semibold text-green-cube mx-8 mt-8">CUBE 秋葉原店</h1>
         <p className="text-xs mx-8 mt-2">◆2023年7月　増室OPEN！</p>
         <p className="text-xs mx-8 mt-2 mb-8">◆秋葉原・神田・岩本町エリアからのアクセス良好で、24時間365日利用可能な店舗です。</p>
         <hr className="mx-8 bg-green-cube"/>
