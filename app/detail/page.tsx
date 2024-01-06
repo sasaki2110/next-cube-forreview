@@ -6,6 +6,7 @@
 'use client'
 import * as React from "react"
 import Image from 'next/image'
+import Link from "next/link"
 
 import Autoplay from "embla-carousel-autoplay"
 import {
@@ -13,6 +14,15 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
 /**
  * 環境変数をstring型で代入できるよう、typeチェック
@@ -38,10 +48,10 @@ export default function Home() {
 
       {/* 次に店舗概要エリア */}
       <div  className="md:my-4 md:mx-2 md:px-4 border-2 border-gray-cube rounded-md bg-white ">
-          <h1 className="text-2xl font-semibold text-green-cube mx-8 mt-8">CUBE 秋葉原</h1>
-          <p className="text-xs mx-8 mt-2">◆2023年7月　増室OPEN！</p>
-          <p className="text-xs mx-8 mt-2 mb-8">◆秋葉原・神田・岩本町エリアからのアクセス良好で、24時間365日利用可能な店舗です。</p>
-          <hr className="mx-8 bg-green-cube"/>
+        <h1 className="text-2xl font-semibold text-green-cube mx-8 mt-8">CUBE 秋葉原</h1>
+        <p className="text-xs mx-8 mt-2">◆2023年7月　増室OPEN！</p>
+        <p className="text-xs mx-8 mt-2 mb-8">◆秋葉原・神田・岩本町エリアからのアクセス良好で、24時間365日利用可能な店舗です。</p>
+        <hr className="mx-8 bg-green-cube"/>
       </div>
 
       {/* 次に店舗詳細エリア */}
@@ -90,6 +100,84 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </main>
+      
+      {/* お部屋一覧エリア */}
+      <div  className="md:my-4 md:mx-2 md:px-4 border-2 border-gray-cube rounded-md bg-white ">
+        <h1 className="text-2xl font-semibold text-green-cube mx-8 mt-8">お部屋一覧</h1>
+
+        {/* グリッド */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-2 px-2 py-2 mx-1 my-1 md:mx-8 md:my-8">
+          {/* 画像エリア */}
+          <div>
+          　　<Image src={etos(process.env.NEXT_PUBLIC_IMAGE_ROOMTYPE1)} alt="店舗画像" width="200" height="100"/>
+          </div>
+          {/* テーブルエリア */}
+          <div className="col-span-4">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="text-center">お部屋番号</TableHead>
+                  <TableHead className="text-center">広さ</TableHead>
+                  <TableHead className="text-center">月額利用料</TableHead>
+                  <TableHead className="text-center">管理費</TableHead>
+                  <TableHead className="text-center">3ヵ月月額利用料<br/>半額キャンペーン</TableHead>
+                  <TableHead className="text-center">WEB申込み</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">Room1</TableCell>
+                  <TableCell>1.0帖/1.66㎡</TableCell>
+                  <TableCell className="text-right">16,020円</TableCell>
+                  <TableCell className="text-right">2,200円</TableCell>
+                  <TableCell className="text-right">9,100円</TableCell>
+                  {/* スマホだとボタンが重なるから対処が必要 */}
+                  <TableCell className="text-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2">
+                      <div>
+                        <Link href="/detail/reservation/input" 
+                              className="py-2 px-2 rounded-lg text-green-cube border border-green-cube hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none " >
+                          内覧予約
+                        </Link>
+                      </div>
+                      <div>
+                        <Link href="/detail/reservation/input" 
+                              className="py-2 px-2 rounded-lg text-white bg-blue-cube border border-blue-cube hover:shadow-teal-md hover:bg-blue-200 hover:text-black transition-all outline-none " >
+                          お申込み
+                        </Link>
+                      </div>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Room1</TableCell>
+                  <TableCell>1.0帖/1.66㎡</TableCell>
+                  <TableCell className="text-right">16,020円</TableCell>
+                  <TableCell className="text-right">2,200円</TableCell>
+                  <TableCell className="text-right">9,100円</TableCell>
+                  {/* スマホだとボタンが重なるから対処が必要 */}
+                  <TableCell className="text-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2">
+                      <div>
+                        <Link href="/detail/reservation/input" 
+                              className="py-2 px-2 rounded-lg text-green-cube border border-green-cube hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none " >
+                          内覧予約
+                        </Link>
+                      </div>
+                      <div>
+                        <Link href="/detail/reservation/input" 
+                              className="py-2 px-2 rounded-lg text-white bg-blue-cube border border-blue-cube hover:shadow-teal-md hover:bg-blue-200 hover:text-black transition-all outline-none " >
+                          お申込み
+                        </Link>
+                      </div>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+      </div>
+   </main>
   )
 }
