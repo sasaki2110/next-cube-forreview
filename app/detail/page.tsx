@@ -109,19 +109,19 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-2 px-2 py-2 mx-1 my-1 md:mx-8 md:my-8">
           {/* 画像エリア */}
           <div>
-          　　<Image src={etos(process.env.NEXT_PUBLIC_IMAGE_ROOMTYPE1)} alt="店舗画像" width="200" height="100"/>
+            <Image src={etos(process.env.NEXT_PUBLIC_IMAGE_ROOMTYPE1)} alt="店舗画像" width="200" height="100"/>
           </div>
           {/* テーブルエリア */}
           <div className="col-span-4">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="text-center">お部屋番号</TableHead>
-                  <TableHead className="text-center">広さ</TableHead>
-                  <TableHead className="text-center">月額利用料</TableHead>
-                  <TableHead className="text-center">管理費</TableHead>
-                  <TableHead className="text-center">3ヵ月月額利用料<br/>半額キャンペーン</TableHead>
-                  <TableHead className="text-center">WEB申込み</TableHead>
+                  <TableHead className="text-center min-w-[110px]">お部屋番号</TableHead>
+                  <TableHead className="text-center min-w-[120px]">広さ</TableHead>
+                  <TableHead className="text-center min-w-[110px]">月額利用料</TableHead>
+                  <TableHead className="text-center min-w-[110px]">管理費</TableHead>
+                  <TableHead className="text-center min-w-[120px]">3ヵ月月額利用料<br/>半額キャンペーン</TableHead>
+                  <TableHead className="text-center min-w-[200px]">WEB申込み</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -133,44 +133,15 @@ export default function Home() {
                   <TableCell className="text-right">9,100円</TableCell>
                   {/* スマホだとボタンが重なるから対処が必要 */}
                   <TableCell className="text-center">
-                    <div className="grid grid-cols-1 md:grid-cols-2">
-                      <div>
-                        <Link href="/detail/reservation/input" 
-                              className="py-2 px-2 rounded-lg text-green-cube border border-green-cube hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none " >
-                          内覧予約
-                        </Link>
-                      </div>
-                      <div>
-                        <Link href="/detail/reservation/input" 
-                              className="py-2 px-2 rounded-lg text-white bg-blue-cube border border-blue-cube hover:shadow-teal-md hover:bg-blue-200 hover:text-black transition-all outline-none " >
-                          お申込み
-                        </Link>
-                      </div>
-                    </div>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Room1</TableCell>
-                  <TableCell>1.0帖/1.66㎡</TableCell>
-                  <TableCell className="text-right">16,020円</TableCell>
-                  <TableCell className="text-right">2,200円</TableCell>
-                  <TableCell className="text-right">9,100円</TableCell>
-                  {/* スマホだとボタンが重なるから対処が必要 */}
-                  <TableCell className="text-center">
-                    <div className="grid grid-cols-1 md:grid-cols-2">
-                      <div>
-                        <Link href="/detail/reservation/input" 
-                              className="py-2 px-2 rounded-lg text-green-cube border border-green-cube hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none " >
-                          内覧予約
-                        </Link>
-                      </div>
-                      <div>
-                        <Link href="/detail/reservation/input" 
-                              className="py-2 px-2 rounded-lg text-white bg-blue-cube border border-blue-cube hover:shadow-teal-md hover:bg-blue-200 hover:text-black transition-all outline-none " >
-                          お申込み
-                        </Link>
-                      </div>
-                    </div>
+                    <Link href="/detail/reservation/input" 
+                          className="py-2 px-2 rounded-lg text-green-cube border border-green-cube hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none " >
+                      内覧予約
+                    </Link>
+                    　
+                    <Link href="/detail/reservation/input" 
+                          className="py-2 px-2 rounded-lg text-white bg-blue-cube border border-blue-cube hover:shadow-teal-md hover:bg-blue-200 hover:text-black transition-all outline-none " >
+                      お申込み
+                    </Link>
                   </TableCell>
                 </TableRow>
               </TableBody>
