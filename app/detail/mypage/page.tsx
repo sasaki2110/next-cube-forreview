@@ -57,7 +57,7 @@ const loginMechanisms:"email" | "phone_number" | "username" = "email";
 const components = {
   SignIn: {
     Footer() {
-      return ("");
+      return (<></>);
     },
   },
 }
