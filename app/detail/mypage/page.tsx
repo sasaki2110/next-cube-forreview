@@ -35,9 +35,8 @@ import {
 } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
-import { JWT } from "aws-amplify/auth";
 import { fetchAuthSession } from 'aws-amplify/auth';
-import { AuthInfo, AuthInfoContext } from "@/app/contexts/AuthContext";
+import { AuthInfoContext } from "@/app/contexts/AuthContext";
 
 Amplify.configure({
   Auth: {
@@ -157,8 +156,6 @@ function App({ signOut, user }: WithAuthenticatorProps) {
     //notifications.push(addN2);
   }
   
-  console.log(data)
-
   // 画面を描画してリターン
   return (
     <main className="container flex flex-col mx-auto px-2 md:px-24 pt-32 bg-gray-cube">
@@ -182,9 +179,7 @@ function App({ signOut, user }: WithAuthenticatorProps) {
               <p className="text-grey-cube text-sm" >{notification.date}</p>
               <p className="text-grey-cube text-lg">{notification.title}</p>
             </div> 
-
           ))}
-
       </div>
     </main>
 )
@@ -192,42 +187,12 @@ function App({ signOut, user }: WithAuthenticatorProps) {
 // 認証でラップしてexport
 export default withAuthenticator(App, withAuthenticatorOptions);
 
-// 翻訳用辞書
+// 翻訳用辞書（今回必要な分だけ定義）
 const dict = {
   'ja': {
-    'Back to Sign In': 'サインイン画面に戻る',
-    'Confirm': '確認',
-    'Confirm Password': 'パスワードの確認',
-    'Confirm Sign Up': 'サインアップの確認',
-    'Confirmation Code': '確認コード',
-    'Create Account': '新規登録',
-    'Create a new account': 'アカウントの新規登録',
-    'Create account': '新規登録',
     'Email': 'メールアドレス',
-    'Enter your code': '確認コードを入力してください',
-    'Enter your email': '登録したメールアドレスを入力してください',
-    'Enter your password': 'パスワードを入力してください',
-    'Enter your username': 'ユーザー名を入力してください',
-    'Forgot your password?': 'パスワードをお忘れの方 ',
-    'Have an account? ': 'アカウント登録済みの方 ',
-    'Hello': 'こんにちは ',
-    'Incorrect username or password': 'ユーザー名またはパスワードが異なります',
-    'Lost your code? ': 'コードを紛失した方 ',
-    'No account? ': 'アカウント未登録の方 ',
     'Password': 'パスワード',
-    'Phone Number': '電話番号',
-    'Resend Code': '確認コードの再送',
-    'Reset Password': 'パスワードのリセット',
-    'Reset your password': 'パスワードのリセット',
-    'Send code': 'コードの送信',
     'Sign In': 'サインイン',
-    'Sign Out': 'サインアウト',
-    'Sign in': 'サインイン',
-    'Sign in to your account': 'サインイン',
-    'User does not exist': 'ユーザーが存在しません',
-    'Username': 'ユーザー名',
-    'Username cannot be empty': 'ユーザー名は必須入力です',
-    'Username/client id combination not found.': 'ユーザー名が見つかりません',
    }
 };
 
