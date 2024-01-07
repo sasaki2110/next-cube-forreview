@@ -53,14 +53,24 @@ Amplify.configure({
 // エラーになるので、やむなく事前に型定義
 const loginMechanisms:"email" | "phone_number" | "username" = "email";
 
+// サインイン画面のフッターを、空にする為のコンポーネント
+const components = {
+  SignIn: {
+    Footer() {
+      return ("");
+    },
+  },
+}
+
 // 認証ラッパー（withAuthenticator）のオプション
 const withAuthenticatorOptions = {
   // サインアップ画面を非表示
   hideSignUp: true,
   // ログインメカニズムをemailに設定
-  loginMechanisms: [loginMechanisms]
+  loginMechanisms: [loginMechanisms],
+  // パスワードをお忘れの方を消すために、フッターを空にする
+  components: components
 }
-
 
 // 翻訳用多言語対応
 import { I18n } from 'aws-amplify/utils';
