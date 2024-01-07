@@ -127,7 +127,13 @@ function App({ signOut, user }: WithAuthenticatorProps) {
 
   // jwt確認用にお知らせを１個追加
   if(notifications.length<=2) {
-    const addN1:Notification = {date:"2023/12/11", title: "idトークンは[" + JSON.stringify(currentIdToken) + "]です。"} 
+    const addN1:Notification = {
+      notificationId: "",
+      date:"2023/12/11", 
+      title: "idトークンは[" + JSON.stringify(currentIdToken) + "]です。",
+      content: "",
+      hasOpened: true,
+    } 
     notifications.push(addN1);
     //const addN2:Notification = {date:"2023/12/11", title: "アクセストークンは[" + JSON.stringify(currentAccessToken) + "]です。"} 
     //notifications.push(addN2);
