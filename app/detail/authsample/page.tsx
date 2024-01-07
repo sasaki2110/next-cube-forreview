@@ -86,7 +86,7 @@ const Login = () => {
 
   return (
     <>
-      <h1>This is Login page</h1>
+      <h1 className="pt-28">This is Login page</h1>
       <div>
         E-mail:
         <input type="text" ref={refEmail} />

@@ -131,7 +131,6 @@ export default function Home() {
                   <TableCell className="text-right">16,020円</TableCell>
                   <TableCell className="text-right">2,200円</TableCell>
                   <TableCell className="text-right">9,100円</TableCell>
-                  {/* スマホだとボタンが重なるから対処が必要 */}
                   <TableCell className="text-center">
                     <Link href="/detail/reservation/input" 
                           className="py-2 px-2 rounded-lg text-green-cube border border-green-cube hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none " >

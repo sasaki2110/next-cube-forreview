@@ -26,7 +26,7 @@ function etos(str:string | undefined):string {
 }
 
 //------------------------------------------------------------------------------------
-// ↓ ここから認証用設定（JWT取得ができないなら、実装方法を変更要）
+// ↓ ここから認証用設定
 import { Amplify } from 'aws-amplify';
 
 import {
@@ -57,6 +57,29 @@ const withAuthenticatorOptions = {
   loginMechanisms: [loginMechanisms]
 }
 
+// カレントセッション保持用のファイルスコープ変数
+import { JWT } from "aws-amplify/auth";
+let currentIdToken:JWT | undefined;
+let currentAccessToken:JWT | undefined;
+
+// カレントセッション取得
+import { fetchAuthSession } from 'aws-amplify/auth';
+async function currentSession() {
+  try {
+    const { accessToken, idToken } = (await fetchAuthSession()).tokens ?? {};
+    console.log("accessToken = [" + accessToken + "]");
+    console.log("idToken = [" + idToken + "]");
+
+    // トークンを、ファイルスコープ変数へ詰め替え
+    currentIdToken = idToken;
+    currentAccessToken = accessToken;
+
+  } catch (err) {
+    console.log(err);
+  }
+}
+currentSession();
+
 // 翻訳用多言語対応
 import { I18n } from 'aws-amplify/utils';
 // ↑ ここまで
@@ -72,6 +95,8 @@ function App({ signOut, user }: WithAuthenticatorProps) {
   let url = etos(process.env.NEXT_PUBLIC_URL_GETCOSTMERS);
   
   console.log(url);
+
+  console.log(user?.signInDetails)
 
   // tanstackQuery呼び出し
   //   isPending:処理中
@@ -96,10 +121,18 @@ function App({ signOut, user }: WithAuthenticatorProps) {
     console.log('An error has occurred: ' + error.message)
     return 
   }
-  
 
   // 戻り値の型を明確にするため、定数へ代入
   const notifications:Notification[] = data;
+
+  // jwt確認用にお知らせを１個追加
+  if(notifications.length<=2) {
+    const addN1:Notification = {date:"2023/12/11", title: "idトークンは[" + JSON.stringify(currentIdToken) + "]です。"} 
+    notifications.push(addN1);
+    //const addN2:Notification = {date:"2023/12/11", title: "アクセストークンは[" + JSON.stringify(currentAccessToken) + "]です。"} 
+    //notifications.push(addN2);
+  }
+  
   console.log(data)
 
   // 画面を描画してリターン
@@ -124,7 +157,8 @@ function App({ signOut, user }: WithAuthenticatorProps) {
             <div className="mx-2 md:mx-8 my-4 md:my-8 px-2 md:px-8 py-4 md:py-8 bg-gray-cube border rounded-xl" key={1}>
               <p className="text-grey-cube text-sm" >{notification.date}</p>
               <p className="text-grey-cube text-lg">{notification.title}</p>
-            </div>           
+            </div> 
+
           ))}
 
       </div>
