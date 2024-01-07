@@ -35,6 +35,10 @@ import {
 } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
+import { JWT } from "aws-amplify/auth";
+import { fetchAuthSession } from 'aws-amplify/auth';
+import { AuthInfo, AuthInfoContext } from "@/app/contexts/AuthContext";
+
 Amplify.configure({
   Auth: {
     Cognito: {
@@ -57,31 +61,10 @@ const withAuthenticatorOptions = {
   loginMechanisms: [loginMechanisms]
 }
 
-// カレントセッション保持用のファイルスコープ変数
-import { JWT } from "aws-amplify/auth";
-let currentIdToken:JWT | undefined;
-let currentAccessToken:JWT | undefined;
-
-// カレントセッション取得
-import { fetchAuthSession } from 'aws-amplify/auth';
-async function currentSession() {
-  try {
-    const { accessToken, idToken } = (await fetchAuthSession()).tokens ?? {};
-    console.log("accessToken = [" + accessToken + "]");
-    console.log("idToken = [" + idToken + "]");
-
-    // トークンを、ファイルスコープ変数へ詰め替え
-    currentIdToken = idToken;
-    currentAccessToken = accessToken;
-
-  } catch (err) {
-    console.log(err);
-  }
-}
-currentSession();
 
 // 翻訳用多言語対応
 import { I18n } from 'aws-amplify/utils';
+import { useContext } from "react";
 // ↑ ここまで
 //------------------------------------------------------------------------------------
 
@@ -90,14 +73,37 @@ import { I18n } from 'aws-amplify/utils';
  * @returns 画面表示するReactNode
  */
 function App({ signOut, user }: WithAuthenticatorProps) {
+  // -------------------------------------------------
+  // ↓　ここから認証情報関連
 
+  // 認証情報保持用のコンテキスト
+  const auth = useContext(AuthInfoContext);
+
+  // カレントセッション取得
+  async function currentSession() {
+    try {
+      const { accessToken, idToken } = (await fetchAuthSession()).tokens ?? {};
+      console.log("accessToken = [" + accessToken + "]");
+      console.log("idToken = [" + idToken + "]");
+
+      // 取得したトークンを、コンテキストへ詰め替え
+      auth.idToken = idToken;
+      auth.accessToken = accessToken;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  currentSession();
+  // ↑　ここまで認証情報関連
+  // -------------------------------------------------
+
+
+  // -------------------------------------------------
+  // ↓ ここからAPI呼び出し関連
   // API（Lambda）のURLを設定（念のため、環境変数で定義）
   let url = etos(process.env.NEXT_PUBLIC_URL_GETCOSTMERS);
   
-  console.log(url);
-
-  console.log(user?.signInDetails)
-
   // tanstackQuery呼び出し
   //   isPending:処理中
   //   error:エラー
@@ -124,13 +130,15 @@ function App({ signOut, user }: WithAuthenticatorProps) {
 
   // 戻り値の型を明確にするため、定数へ代入
   const notifications:Notification[] = data;
+  // ↑　ここまでAPI呼び出し関連
+  // -------------------------------------------------
 
   // jwt確認用にお知らせを１個追加
   if(notifications.length<=2) {
     const addN1:Notification = {
       notificationId: "",
       date:"2023/12/11", 
-      title: "idトークンは[" + JSON.stringify(currentIdToken) + "]です。",
+      title: "idトークンは[" + JSON.stringify(auth.idToken) + "]です。",
       content: "",
       hasOpened: true,
     } 
