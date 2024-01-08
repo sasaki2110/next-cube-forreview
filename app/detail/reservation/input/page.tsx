@@ -65,10 +65,6 @@ export default function Home() {
         </ul>
       </div>
 
-      {/* 見出しエリア */}
-      {/* 部屋情報エリア */}
-
-
       {/* 入力エリア onSubmit={handleSubmit(onSubmit)} action="/detail/reservation/check" */}
       <div className="md:flex md:items-center mb-6 justify-center pt-14">
       <form className="w-full max-w-3xl" onSubmit={handleSubmit(onSubmit)}>

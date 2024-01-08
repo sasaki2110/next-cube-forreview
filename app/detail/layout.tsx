@@ -9,7 +9,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////
 import NavBar from '@/app/components/NavBar';
 import NavBar2 from '@/app/components/NavBar2';
-import Providers from '@/app/api/providers';
+import Providers from '@/app/components/providers';
 
 export default function DetailLayout({
   children,
