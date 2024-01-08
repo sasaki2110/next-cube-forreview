@@ -6,6 +6,20 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////
 'use client'
 import { useQuery } from "@tanstack/react-query"
+import Image from "next/image"
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog"
+
+import { useForm, SubmitHandler } from "react-hook-form"
 
 // 後のエラー回避の為、type宣言
 type Notification = {
@@ -14,6 +28,18 @@ type Notification = {
   "title": String,
   "content": String,
   "hasOpened": boolean;
+}
+
+// daialog用のタイプ宣言
+type UserInfo = {
+  name: string,
+  phone: string,
+  email: string,
+  address: string,
+  utype: string,
+  cname: string,
+  cphone: string,
+  caddress: string,
 }
 
 /**
@@ -73,7 +99,7 @@ const withAuthenticatorOptions = {
 
 // 翻訳用多言語対応
 import { I18n } from 'aws-amplify/utils';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 // ↑ ここまで
 //------------------------------------------------------------------------------------
 
@@ -82,6 +108,48 @@ import { useContext } from "react";
  * @returns 画面表示するReactNode
  */
 function App({ signOut, user }: WithAuthenticatorProps) {
+
+  // -------------------------------------------------
+  // ↓　ここからダイアログ関連
+
+  // 情報受け渡し用のステート
+  const [userInfo, setUserInfo] = useState<UserInfo>({
+    name: "磯野　かつお",
+    phone: "090-1234-1234",
+    email: "abcdefg@example.com",
+    address: "-",
+    utype: "法人",
+    cname: "株式会社〇〇〇",
+    cphone: "03-1234-1224",
+    caddress: "",
+  });
+
+  // ダイアログのオープン状態を制御するステート
+  const [open, setOpen] = useState(false);
+
+  // useFormでフォーム部品を生成
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<UserInfo>()
+
+  // onSubmitで呼び出す関数リテラルを定義
+  const onSubmit: SubmitHandler<UserInfo> = (data) => {
+    console.log(data);
+    
+    // 入力された値をコンテキストへ詰め替え
+    setUserInfo(data);
+
+    // ダイアログを閉じる
+    setOpen(false);
+  }
+
+
+  // ↑　ここまでダイアログ関連
+  // -------------------------------------------------
+
   // -------------------------------------------------
   // ↓　ここから認証情報関連
 
@@ -92,8 +160,6 @@ function App({ signOut, user }: WithAuthenticatorProps) {
   async function currentSession() {
     try {
       const { accessToken, idToken } = (await fetchAuthSession()).tokens ?? {};
-      console.log("accessToken = [" + accessToken + "]");
-      console.log("idToken = [" + idToken + "]");
 
       // 取得したトークンを、コンテキストへ詰め替え
       auth.idToken = idToken;
@@ -142,20 +208,6 @@ function App({ signOut, user }: WithAuthenticatorProps) {
   // ↑　ここまでAPI呼び出し関連
   // -------------------------------------------------
 
-  // jwt確認用にお知らせを１個追加
-  if(notifications.length<=2) {
-    const addN1:Notification = {
-      notificationId: "",
-      date:"2023/12/11", 
-      title: "idトークンは[" + JSON.stringify(auth.idToken) + "]です。",
-      content: "",
-      hasOpened: true,
-    } 
-    notifications.push(addN1);
-    //const addN2:Notification = {date:"2023/12/11", title: "アクセストークンは[" + JSON.stringify(currentAccessToken) + "]です。"} 
-    //notifications.push(addN2);
-  }
-  
   // 画面を描画してリターン
   return (
     <main className="container flex flex-col mx-auto px-2 md:px-24 pt-32 bg-gray-cube">
@@ -168,7 +220,7 @@ function App({ signOut, user }: WithAuthenticatorProps) {
           <h1 className="text-3xl font-semibold text-blue-cube">マイページ</h1>
       </div>
 
-      {/* 次にお知らせエリア */}
+      {/* お知らせエリア */}
       <div  className="md:my-4 md:mx-2 md:px-4 border-2 border-gray-cube rounded-md bg-white ">
           <h1 className="text-2xl font-semibold text-green-cube mx-8 my-8">お知らせ</h1>
           <hr className="mx-8 bg-green-cube"/>
@@ -181,6 +233,146 @@ function App({ signOut, user }: WithAuthenticatorProps) {
             </div> 
           ))}
       </div>
+
+      {/* お客様情報エリア */}
+      <div  className="md:my-4 md:mx-2 md:px-4 border-2 border-gray-cube rounded-md bg-white ">
+          <h1 className="text-2xl font-semibold text-green-cube mx-8 my-8">お客様情報</h1>
+          <hr className="mx-8 bg-green-cube"/>
+
+          
+          {/* グリッド */}
+          <div className="grid grid-flow-row grid-cols-1 md:grid-cols-5 mx-8 my-8 gap-4">
+            {/* イメージエリア */}
+            <div>
+              <Image src={etos(process.env.NEXT_PUBLIC_IMAGE_ROOMTYPE1)} alt="店舗画像" width="200" height="100"/>
+            </div>
+
+            {/* 情報エリア１ */}
+            <div className="col-span-2 grid grid-cols-2 grid-rows-4 mx-0 md:mx-8">
+              <div className="text-sm">氏名</div><div>{userInfo.name}</div>
+              <div className="text-sm">連絡先</div><div>{userInfo.phone}</div>
+              <div className="text-sm">メールアドレス</div><div>{userInfo.email}</div>
+              <div className="text-sm">住所</div><div>{userInfo.address}</div>
+            </div>
+            {/* 情報エリア２ */}
+            <div className="col-span-2 grid grid-cols-2 grid-rows-4 mx-0 md:mx-8">
+              <div className="text-sm">利用区分</div><div>{userInfo.utype}</div>
+              <div className="text-sm">法人名</div><div>{userInfo.cname}</div>
+              <div className="text-sm">法人連絡先</div><div>{userInfo.cphone}</div>
+              <div className="text-sm">法人住所</div><div>{userInfo.caddress}</div>
+            </div>
+          </div>
+
+          {/* ダイアログエリア */}
+          <div className="text-center">
+            <Dialog open={open} onOpenChange={setOpen}>
+
+              {/* 主画面に表示する、ダイアログを開くボタン */}
+              <DialogTrigger className="py-2 px-16 mb-10 rounded-lg text-green-cube border border-green-cube hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none ">
+                お客様情報の変更
+              </DialogTrigger>
+
+              {/* ここからダイアログの中身 */}
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle className="text-green-cube">お客様情報変更</DialogTitle>
+                </DialogHeader>
+
+                {/* 入力フォーム */}
+                <form onSubmit={handleSubmit(onSubmit)}>
+
+                  <div className="grid grid-cols-3 grid-rows-9 mx-0 md:mx-8 gap-6 pt-8">
+                    <div className="text-sm text-right">氏名：</div>
+                    <div className="col-span-2">
+                      <input className="border-2 rounded-md" 
+                             defaultValue={userInfo.name}
+                             {...register("name", { required: true })}
+                      />
+                      {errors.name && <span>　必須入力です。</span>}
+                    </div>
+
+                    <div className="text-sm text-right">連絡先：</div>
+                    <div className="col-span-2">
+                      <input className="border-2 rounded-md"
+                             defaultValue={userInfo.phone}
+                             {...register("phone", { required: true })}
+                      />
+                      {errors.phone && <span>　必須入力です。</span>}
+                    </div>
+
+                    <div className="text-sm  text-right">メールアドレス：</div>
+                    <div className="col-span-2">
+                      <input className="border-2 rounded-md"
+                             defaultValue={userInfo.email}
+                             {...register("email", { required: true })}
+                      />
+                      {errors.email && <span>　必須入力です。</span>}
+                    </div>
+
+                    <div className="text-sm text-right">住所：</div>
+                    <div className="col-span-2">
+                      <input className="border-2 rounded-md"
+                             defaultValue={userInfo.address}
+                             {...register("address", { required: true })}
+                      />
+                      {errors.address && <span>　必須入力です。</span>}
+                    </div>
+
+                    <div className="text-sm text-right">利用区分：</div>
+                    <div className="col-span-2">
+                      <input className="border-2 rounded-md"
+                             defaultValue={userInfo.utype}
+                             {...register("utype", { required: true })}
+                      />
+                      {errors.utype && <span>　必須入力です。</span>}
+                    </div>
+
+                    <div className="text-sm text-right">法人名：</div>
+                    <div className="col-span-2">
+                      <input className="border-2 rounded-md"
+                             defaultValue={userInfo.cname}
+                             {...register("cname", { required: true })}
+                      />
+                      {errors.cname && <span>　必須入力です。</span>}
+                    </div>
+
+                    <div className="text-sm text-right">法人連絡先：</div>
+                    <div className="col-span-2">
+                      <input className="border-2 rounded-md"
+                             defaultValue={userInfo.cphone}
+                             {...register("cphone", { required: true })}
+                      />
+                      {errors.cphone && <span>　必須入力です。</span>}
+                    </div>
+
+                    <div className="text-sm text-right">法人住所：</div>
+                    <div className="col-span-2">
+                      <input className="border-2 rounded-md"
+                             defaultValue={userInfo.caddress}
+                             {...register("caddress", { required: true })}
+                      />
+                      {errors.caddress && <span>　必須入力です。</span>}
+                    </div>
+                  </div>
+
+                  <div className="col-span-2 text-center">
+                    <button className="py-2 px-16 mb-4 rounded-lg text-green-cube border border-green-cube hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none "
+                                type="submit"
+                        >
+                          入力内容を確定
+                    </button>
+                  </div>
+
+                  <DialogFooter className="justify-center">
+                    <DialogClose asChild>
+                    </DialogClose>
+                  </DialogFooter>
+                </form>
+
+              </DialogContent>
+            </Dialog>
+          </div>
+      </div>      
     </main>
 )
 }
