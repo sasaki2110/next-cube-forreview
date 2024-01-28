@@ -19,7 +19,6 @@ export default async function Home() {
 
     // DONEになるまで無限ループ（これって無限でいいの？）
     do {
-
       // ２回目のリクエストを呼び出し
       priUrl = await secondReq(reqId)
 
