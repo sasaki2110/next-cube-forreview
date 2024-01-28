@@ -1,4 +1,4 @@
-export const fetchCache = "only-no-store";
+export const fetchCache = "force-no-store";
 
 import { redirect } from "next/navigation";
 
