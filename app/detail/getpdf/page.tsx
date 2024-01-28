@@ -1,3 +1,5 @@
+export const fetchCache = "only-no-store";
+
 import { redirect } from "next/navigation";
 
 // ポーリン時時のスリープ処理
