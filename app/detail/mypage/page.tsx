@@ -436,7 +436,7 @@ const dict = {
   'ja': {
     'Email': 'メールアドレス',
     'Password': 'パスワード',
-    'Sign In': 'サインイン',
+    'Sign in': 'サインイン',
    }
 };
 
