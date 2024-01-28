@@ -8,8 +8,8 @@ export default async function Home() {
   console.log("aaa")
 
   // 最初のリクエストを await で同期的に呼び出し、リクエストIDを取得
-  const reqId = await firstReq()
-  let priUrl = undefined
+  const reqId: string = await firstReq()
+  let priUrl: string | undefined = undefined
 
   // もし、まだリクエストIDがなければスルー
   if(reqId === null) {
@@ -65,7 +65,7 @@ async function firstReq() {
   return(data.requestId)
 }
 
-async function secondReq(reqId) {
+async function secondReq(reqId: string) {
   console.log("in the secondReq")
   const url = "https://ockfubou9l.execute-api.ap-northeast-3.amazonaws.com/default/payments/1234/invoice/download/" + reqId
   const response = await fetch(url, {
