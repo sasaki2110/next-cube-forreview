@@ -7,6 +7,16 @@
 'use client'
 import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
+import Link from "next/link"
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
 import {
   Dialog,
@@ -232,6 +242,48 @@ function App({ signOut, user }: WithAuthenticatorProps) {
               <p className="text-grey-cube text-lg">{notification.title}</p>
             </div> 
           ))}
+      </div>
+
+      {/* お支払いエリア */}
+      <div  className="md:my-4 md:mx-2 md:px-4 border-2 border-gray-cube rounded-md bg-white ">
+          <h1 className="text-2xl font-semibold text-green-cube mx-8 my-8">お支払い</h1>
+          <hr className="mx-8 bg-green-cube"/>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="text-center min-w-[110px]">店舗名</TableHead>
+                <TableHead className="text-center min-w-[110px]">お部屋番号</TableHead>
+                <TableHead className="text-center min-w-[110px]">利用月</TableHead>
+                <TableHead className="text-center min-w-[110px]">お支払期限</TableHead>
+                <TableHead className="text-center min-w-[110px]">状態</TableHead>
+                <TableHead className="text-center min-w-[110px]">請求書発行</TableHead>
+                <TableHead className="text-center min-w-[110px]">領収書発行</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell className="text-center">CUBE 秋葉原店</TableCell>
+                <TableCell className="text-center">Room1</TableCell>
+                <TableCell className="text-center">2024/01</TableCell>
+                <TableCell className="text-center">2024/02/29</TableCell>
+                <TableCell className="text-center">請求済み</TableCell>
+                <TableCell className="text-center">
+                  <Link href="/detail/getpdf" 
+                        target="_blank"
+                        className="py-2 px-2 rounded-lg text-green-cube border border-green-cube hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none " >
+                    請求書発行
+                  </Link>
+                </TableCell>
+                <TableCell className="text-center">
+                  <Link href="#" 
+                        className="py-2 px-2 rounded-lg text-green-cube border border-green-cube hover:shadow-teal-md hover:bg-green-700 hover:text-white transition-all outline-none " >
+                    領収書発行
+                  </Link>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+ 
       </div>
 
       {/* お客様情報エリア */}
