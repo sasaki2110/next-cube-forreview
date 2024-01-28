@@ -79,6 +79,8 @@ async function secondReq(reqId: string) {
 
   const data = await response.json()
 
-  return( data.downloadUrl)
+  console.log(JSON.stringify(data))
+
+  return( data.downloadUrl )
 }
 
