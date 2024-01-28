@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 // ポーリン時時のスリープ処理
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 export default async function Home() {
 
