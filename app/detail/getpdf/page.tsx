@@ -23,7 +23,7 @@ export default async function Home() {
       priUrl = await secondReq(reqId)
 
       // １秒待ち合わせ
-      await sleep(1000)
+      await sleep(100)
     } while(priUrl === null || priUrl == undefined)
   }
 
