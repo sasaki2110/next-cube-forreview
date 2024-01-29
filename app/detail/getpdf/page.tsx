@@ -1,4 +1,4 @@
-export const fetchCache = "force-no-store";
+export const fetchCache = "only-no-store";
 
 import { redirect } from "next/navigation";
 
@@ -25,7 +25,7 @@ export default async function Home() {
       priUrl = await secondReq(reqId)
 
       // １秒待ち合わせ
-      await sleep(100)
+      await sleep(1000)
     } while(priUrl === null || priUrl == undefined)
   }
 
