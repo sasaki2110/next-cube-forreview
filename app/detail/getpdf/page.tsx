@@ -1,6 +1,7 @@
 export const fetchCache = "only-no-store";
 
 import { redirect } from "next/navigation";
+import { headers } from 'next/headers'
 
 // ポーリン時時のスリープ処理
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
@@ -8,6 +9,9 @@ const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 export default async function Home() {
 
   console.log("aaa")
+
+  // 動的レンダリングするためのおまじない
+  const headersList = headers()
 
   // 最初のリクエストを await で同期的に呼び出し、リクエストIDを取得
   const reqId: string = await firstReq()
