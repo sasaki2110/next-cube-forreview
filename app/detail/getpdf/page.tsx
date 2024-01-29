@@ -1,7 +1,6 @@
 export const fetchCache = "only-no-store";
 
 import { redirect } from "next/navigation";
-import { headers } from 'next/headers'
 
 // ポーリン時時のスリープ処理
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
@@ -9,9 +8,6 @@ const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 export default async function Home() {
 
   console.log("aaa")
-
-  // 動的レンダリングするためのおまじない
-  const headersList = headers()
 
   // 最初のリクエストを await で同期的に呼び出し、リクエストIDを取得
   const reqId: string = await firstReq()
@@ -78,6 +74,7 @@ async function secondReq(reqId: string) {
     mode: "cors", // no-cors, *cors, same-origin
     headers: {
       "Content-Type": "application/json",
+      "omajinai" : String(Math.floor(Date.now() / 1000)),
     },
     referrerPolicy: "origin", // no-referrer, *no-referrer-when-downgrade, origin, 
     cache: "no-store",
