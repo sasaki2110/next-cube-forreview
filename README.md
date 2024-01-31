@@ -1,4 +1,4 @@
-# これはNEXT.jsで作ったサンプルってこった。tailWindやらshadcnやらtanstackqueryやらも入れた
+# これはNEXT.jsで作ったモックってこった。tailWindやらshadcnやらtanstackqueryやらも入れた。バックのモックを作ったから、その呼び出し（ポーリング例）も入れた。
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
