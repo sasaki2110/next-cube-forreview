@@ -12,3 +12,5 @@
    
    amplify : https://main.d1z99fgdnfg6x3.amplifyapp.com/
 
+vercel から node18終了に伴い、node22へのアップデート指示が来ている。
+一旦現状でコミットしてみて、エラーになるか確認。
